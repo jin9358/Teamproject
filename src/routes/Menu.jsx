@@ -4,6 +4,7 @@ import { desserts } from "../data/desserts";
 import { useCart } from "../components/CartContext";
 import { useNavigate } from "react-router-dom";
 import '../css/menu.css'
+import Footer from "./footer";
 
 function Menu() {
   const [activeTab, setActiveTab] = useState("coffee");
@@ -25,63 +26,77 @@ function Menu() {
     // setMessage(`${item.name}가 장바구니에 담겼습니다!`);
 
     // 2초 후 메시지 사라지게
-    setTimeout(() => setMessage(""), 2000);
+    setMessage(`${item.name}(이)가 장바구니에 담겼습니다!`);
+    setTimeout(() => setMessage(""), 1000);
   };
 
   const renderItems = () => {
     if (activeTab === "coffee") {
-      return drinks.map((drink) => (
-          <button key={drink.name} onClick={() => handleAddToCart(drink)} className="menu-card">
-            <img src={drink.image} alt={drink.name} />
-            <div>
-              {drink.name}
-              <br />
-              {drink.basePrice.toLocaleString()} 원
-            </div>
-          </button>
-      ));
+      return (
+        <div className="menu-grid">
+          {drinks.map((drink) => (
+            <button key={drink.name} onClick={() => handleAddToCart(drink)} className="menu-card">
+              <img src={drink.image} alt={drink.name} />
+              <p>
+                {drink.name}
+                <br />
+                {drink.basePrice.toLocaleString()}원
+              </p>
+            </button>
+          ))}
+        </div>
+      );
     } else {
-      return desserts.map((dessert) => (
-        <button key={dessert.name} onClick={() => handleAddToCart(dessert)}>
-          {dessert.name}
-          <br />
-          {dessert.price.toLocaleString()} 원
-        </button>
-      ));
+      return (
+        <div className="menu-grid">
+          {desserts.map((dessert) => (
+            <button key={dessert.name} onClick={() => handleAddToCart(dessert)} className="menu-card">
+              <img src={dessert.image} alt={dessert.name} />
+              <p>
+                {dessert.name}
+                <br />
+                {dessert.price.toLocaleString()}원
+              </p>
+            </button>
+          ))}
+        </div>
+      );
     }
   };
 
   return (
-    <div style={{ padding: "150px" }}>
-      {/* 탭 버튼 */}
-      <div>
-        <button
-          style={{
-            backgroundColor: activeTab === "coffee" ? "#5f5f5f" : "#000",
-          }}
-          onClick={() => setActiveTab("coffee")}
-        >
-          ☕ coffee
-        </button>
-        <button
-          style={{
-            backgroundColor: activeTab === "dessert" ? "#5f5f5f" : "#000",
-          }}
-          onClick={() => setActiveTab("dessert")}
-        >
-          🍰 dessert
-        </button>
+    <div >
+      <div >
+        <div className="tab-container">
+        <input type="radio" name="tab" id="tab1" className="tab tab--1" />
+          <label className="tab_label" htmlFor="tab1"
+            onClick={() => setActiveTab("coffee")}
+          >
+            ☕ coffee
+          </label>
+          <input type="radio" name="tab" id="tab2" className="tab tab--2" />
+          <label className="tab_label" htmlFor="tab2"
+            onClick={() => setActiveTab("dessert")}
+          >
+            🍰 dessert
+          </label>
+
+          <div className="indicator"></div>
+        </div>
+
       </div>
 
       {/* 피드백 메시지 */}
       {message && (
-        <div style={{ margin: "10px 0", color: "green", fontWeight: "bold" }}>
+        <div className="message">
           {message}
         </div>
       )}
 
       {/* 아이템 리스트 */}
       <div>{renderItems()}</div>
+
+      <Footer />
     </div>
   );
 }

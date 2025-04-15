@@ -6,5 +6,6 @@ export const drinks = [
   { name: "바닐라 라떼", path: "vanilla-latte", basePrice: 3800, image: CoffeeImage },
   { name: "캬라멜 마끼아또", path: "caramel-macchiato", basePrice: 4000, image: CoffeeImage },
   { name: "카푸치노", path: "cappuccino", basePrice: 3700, image: CoffeeImage },
-  { name: "아포 카토", path: "affogato", basePrice: 4500, image: CoffeeImage }
+  { name: "아포 카토", path: "affogato", basePrice: 4500, image: CoffeeImage },
+  
 ];
