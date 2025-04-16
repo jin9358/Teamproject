@@ -12,6 +12,7 @@ function Menu() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  
   const handleAddToCart = (item) => {
     const cartItem = {
       name: item.name,
@@ -75,21 +76,21 @@ function Menu() {
   return (
     <div >
       <div >
-        <div className="tab-container">
-        <input type="radio" name="tab" id="tab1" className="tab tab--1" />
-          <label className="tab_label" htmlFor="tab1"
-            onClick={() => setActiveTab("coffee")}
-          >
-            ☕ coffee
-          </label>
-          <input type="radio" name="tab" id="tab2" className="tab tab--2" />
-          <label className="tab_label" htmlFor="tab2"
-            onClick={() => setActiveTab("dessert")}
-          >
-            🍰 dessert
-          </label>
 
-          <div className="indicator"></div>
+        <div className="radio-input">
+          <label>
+            <input type="radio" id="value-1" name="value-radio" value="value-1"  onClick={() => setActiveTab("coffee")}/>
+            <span>
+              coffee☕
+            </span>
+          </label>
+          <label>
+            <input type="radio" id="value-2" name="value-radio" value="value-2"  onClick={() => setActiveTab("dessert")}/>
+            <span>
+              dessert🍰
+            </span>
+          </label>
+          <span className="selection"></span>
         </div>
 
       </div>
@@ -110,3 +111,24 @@ function Menu() {
 }
 
 export default Menu;
+
+
+      // <div >
+        
+      //   <div className="tab-container">
+      //   <input type="radio" name="tab" id="tab1" className="tab tab--1" />
+      //     <label className="tab_label" htmlFor="tab1"
+      //       onClick={() => setActiveTab("coffee")}
+      //     >
+      //       coffee☕
+      //     </label>
+      //     <input type="radio" name="tab" id="tab2" className="tab tab--2" />
+      //     <label className="tab_label" htmlFor="tab2"
+      //       onClick={() => setActiveTab("dessert")}
+      //     >
+      //       dessert🍰
+      //     </label>
+      //     <div className="indicator"></div>
+      //   </div>
+
+      // </div>

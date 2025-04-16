@@ -20,7 +20,7 @@ function Cart() {
 
 
   return (
-    <div style={{ padding: "150px" }}>
+    <div style={{ padding: "25px 150px" }}>
       <h2>🛒 장바구니</h2>
 
       {cartItems.length === 0 ? (
@@ -37,7 +37,7 @@ function Cart() {
                 <button onClick={() => handleIncrease(index, item.quantity)}>➕</button>
               </div>     
 
-              <button onClick={() => removeItem(index)} style={{ marginTop: "10px" }}>
+              <button onClick={() => removeItem(index)} >
                 ❌ 삭제
               </button>
             </li>
