@@ -36,7 +36,11 @@ function Menu() {
         <div className="menu-grid">
           {drinks.map((drink) => (
             <button key={drink.name} onClick={() => handleAddToCart(drink)} className="menu-card">
-              <img src={drink.image} alt={drink.name} />
+            <img
+              src={drink.image}
+              alt={drink.name}
+              style={{ width: `${drink.width}px`, height: `${drink.height}px` }}
+            />
               <p>
                 {drink.name}
                 <br />
@@ -51,7 +55,11 @@ function Menu() {
         <div className="menu-grid">
           {desserts.map((dessert) => (
             <button key={dessert.name} onClick={() => handleAddToCart(dessert)} className="menu-card">
-              <img src={dessert.image} alt={dessert.name} />
+            <img
+              src={dessert.image}
+              alt={dessert.name}
+              style={{ width: `${dessert.width}px`, height: `${dessert.height}px` }}
+            />
               <p>
                 {dessert.name}
                 <br />
