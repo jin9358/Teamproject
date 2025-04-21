@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'GowunDodum-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'GowunDodum-Regular';
+}
+
+body {
+  background-color: wheat;
+  color: black;
+  padding-bottom: 320px;
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  display: none;  /* 웹킷 기반 브라우저에서 스크롤바를 숨김 */
+}

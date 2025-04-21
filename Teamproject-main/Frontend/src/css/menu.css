@@ -1,0 +1,138 @@
+/* 라디오 버튼을 숨겨 기본 UI가 보이지 않게 함 */
+.radio-input input {
+  display: none;
+}
+
+.radio-input {
+  --container_width: 200px; /* 선택 바 넓이를 변수로 지정해 재사용 가능하게 함 */
+  position: fixed;
+  left: 2%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #212121;
+  color: #fff;
+  width: var(--container_width);
+  overflow: hidden;
+  border: 2px solid #fff;
+}
+
+/* 각 라벨을 버튼처럼 보이게 함 */
+.radio-input label {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 14px;
+}
+
+/* 선택 영역을 나타내는 바 */
+.selection {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: calc(var(--container_width) / 2);
+  z-index: 0;
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+}
+
+/* 선택된 라벨 텍스트 색 변경 */
+.radio-input label:has(input:checked) {
+  color: #000;
+}
+
+/* 선택된 항목 뒤에 노란색 선택 바 표시 */
+.radio-input label:has(input:checked) ~ .selection {
+  background-color: #ffe500;
+  display: inline-block;
+}
+
+/* 첫 번째 버튼 선택 시 선택 바 위치 지정 */
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 0 / 2));
+}
+
+/* 두 번째 버튼 선택 시 선택 바 위치 지정 */
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 1 / 2));
+}
+
+/* 메뉴 카드 전체 그리드 스타일 */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  
+}
+
+/* 메뉴 카드 스타일 */
+.menu-card {
+  padding: 1.3em 3em;
+  font-size: 16px;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin: 20px;
+  max-width: 300px;
+}
+
+/* 카드 안 이미지 스타일 */
+.menu-card img {
+  width: 100px;
+  height: 100px; 
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 카드 hover 시 효과 */
+.menu-card:hover {
+  background-color: #23c483;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+/* 카드 클릭 시 살짝 아래로 눌림 효과 */
+.menu-card:active {
+  transform: translateY(-1px);
+}
+
+/* 카드 안 텍스트 스타일 */
+.menu-card p {
+  font-size: 16px;
+}
+
+/* 메시지 팝업 스타일 */
+.message {
+  position: fixed;
+  top: 50%; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  color: black;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  font-size: 1.5rem;
+}
